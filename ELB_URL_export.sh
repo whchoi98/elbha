@@ -11,7 +11,7 @@ echo "export ICNVPC_InternetALB2_URL=${ICNVPC_InternetALB2_URL}"| tee -a ~/.bash
 
 aws elbv2 describe-load-balancers --names ICNVPC-InternetNLB1 | jq -r '.LoadBalancers[].DNSName'
 export ICNVPC_InternetNLB1_URL=$(aws elbv2 describe-load-balancers --names ICNVPC-InternetNLB1 | jq -r '.LoadBalancers[].DNSName')
-echo "export ICNVPC_InternetNLB1_URL=${ICNVPC_InternetALB1_URL}"| tee -a ~/.bash_profile
+echo "export ICNVPC_InternetNLB1_URL=${ICNVPC_InternetNLB1_URL}"| tee -a ~/.bash_profile
 
 aws elbv2 describe-load-balancers --names ICNVPC-InternetNLB2 | jq -r '.LoadBalancers[].DNSName'
 export ICNVPC_InternetNLB2_URL=$(aws elbv2 describe-load-balancers --names ICNVPC-InternetNLB2 | jq -r '.LoadBalancers[].DNSName')
