@@ -106,19 +106,76 @@ aws cloudformation deploy \
   --s3-bucket ${bucket_name}
 
 ```
+### 2. Configuring the environment for testing
 
+1. Export the public IP of Cloud9 instance
 ```
-mv ./mykey ./mykey.pem
-chmod 400 ./mykey.pem
-```
-
-```
+### Cloud9 or Others EC2 IP address
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=*cloud9*' | jq -r '.Reservations[].Instances[].PublicIpAddress'
 export cloud9_public_ip=$(aws ec2 describe-instances --filters 'Name=tag:Name,Values=*cloud9*' | jq -r '.Reservations[].Instances[].PublicIpAddress')
 echo "export cloud9_public_ip=${cloud9_public_ip}"| tee -a ~/.bash_profile
 source ~/.bash_profile
 
 ```
+
+2. Export the EC2 ID of Public/Private EC2 Instances
+
+```
+./ec2_id_export.sh
+
+```
+
+3. Export the ELB URL of ALB/NLB
+
+```
+./ELB_URL_export.sh
+   
+```
+
+4. SChange PEM key permission for SCP Test.
+   
+```
+mv ./mykey ./mykey.pem
+chmod 400 ./mykey.pem
+
+```
+
+### Connect to the Linux Firewall and EC2
+
+1. Connect to the Linux firewall by ssm
+
+```
+aws ssm start-session --target $Appliance_11_101
+aws ssm start-session --target $Appliance_11_102
+aws ssm start-session --target $Appliance_12_101
+aws ssm start-session --target $Appliance_12_102
+
+```
+
+2. conntect to EC2 Instance
+
+```
+aws ssm start-session --target $Public_11_101
+aws ssm start-session --target $Public_11_102
+aws ssm start-session --target $Public_11_103
+aws ssm start-session --target $Public_11_104
+aws ssm start-session --target $Public_12_101
+aws ssm start-session --target $Public_12_102
+aws ssm start-session --target $Public_12_103
+aws ssm start-session --target $Public_12_104
+aws ssm start-session --target $Private_11_101
+aws ssm start-session --target $Private_11_102
+aws ssm start-session --target $Private_11_103
+aws ssm start-session --target $Private_11_104
+aws ssm start-session --target $Private_12_101
+aws ssm start-session --target $Private_12_102
+aws ssm start-session --target $Private_12_103
+aws ssm start-session --target $Private_12_104
+
+```
+
+
+
 
 
 
