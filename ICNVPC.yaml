@@ -45,20 +45,20 @@ Parameters:
     Type: AWS::EC2::AvailabilityZone::Name
     Default: "ap-northeast-2b"
 
-  GWLBeSubnetABlock:
-    Type: String
-    Default: 10.1.1.0/24
-    Description: "CidrBlock for AZ A GWLBe subnet A within the VPC"   
-
-  GWLBeSubnetBBlock:
-    Type: String
-    Default: 10.1.2.0/24
-    Description: "CidrBlock for AZ B GWLBe subnet B within the VPC"
-
   VPCCIDRBlock:
     Type: String
     Default: 10.11.0.0/16
     Description: "The CIDR range for the VPC. This should be a valid private (RFC 1918) CIDR range."
+
+  GWLBeSubnetABlock:
+    Type: String
+    Default: 10.11.1.0/24
+    Description: "CidrBlock for AZ A GWLBe subnet A within the VPC"   
+
+  GWLBeSubnetBBlock:
+    Type: String
+    Default: 10.11.2.0/24
+    Description: "CidrBlock for AZ B GWLBe subnet B within the VPC"
 
   PublicSubnetABlock:
     Type: String
