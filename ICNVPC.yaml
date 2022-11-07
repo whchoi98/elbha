@@ -422,13 +422,13 @@ Resources:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId: !Ref PublicSubnetA
-      RouteTableId: !Ref PublicSubnetRouteTable
+      RouteTableId: !Ref PublicSubnetARouteTable
 
   PublicSubnetRouteTableBAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId: !Ref PublicSubnetB
-      RouteTableId: !Ref PublicSubnetRouteTable
+      RouteTableId: !Ref PublicSubnetBRouteTable
 
 #############################################################
 # Create-Private-Subnet: Create VPC Private_Subnet_a,b      #
