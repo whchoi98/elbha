@@ -63,6 +63,32 @@ aws ec2 associate-iam-instance-profile --iam-instance-profile Name=cloud9admin -
 
 ```
 
+### 1. VPC depoloyment
+Deploy a GWLB VPC and a test VPC.
+
+```
+### GWLB VPC
+aws cloudformation deploy \
+  --region ap-northeast-2 \
+  --stack-name "GWLBVPC" \
+  --template-file "/home/ec2-user/environment/elbha/gwlb.yaml" \
+  --parameter-overrides "KeyPair=$mykey" \
+  --capabilities CAPABILITY_NAMED_IAM
+  
+```
+ 
+```
+### Export vpc endpoint service name to shell variable
+export VPCEndpointServiceName=$(aws ec2 describe-vpc-endpoint-services --filter "Name=service-type,Values=GatewayLoadBalancer" | jq -r '.ServiceNames[]')
+echo $VPCEndpointServiceName
+
+ ```
+
+```
+## Export Linux firewall based appliance to shell variable
+./appliance_export.sh
+
+```
 
 
 
