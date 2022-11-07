@@ -1,9 +1,10 @@
 ### 0. environment setup
 
-1. git clone
+1. git clone & awscli version upgrade
 
 ```
 git clone https://github.com/whchoi98/elbha.git
+./awscli_upgrade.sh
 
 ```
 
