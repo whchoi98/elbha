@@ -125,6 +125,11 @@ source ~/.bash_profile
 
 ```
 
+```
+./ec2_public_ip.sh
+
+```
+
 3. Export the ELB URL of ALB/NLB
 
 ```
@@ -152,6 +157,13 @@ aws ssm start-session --target $Appliance_12_102
 
 ```
 
+```
+sudo su ec2-user
+export mykey="$Cloud9_Public_IP"
+sudo tcpdump -nvv 'port 6081'| grep $Cloud9_Public_IP
+
+```
+
 2. conntect to EC2 Instance
 
 ```
@@ -173,6 +185,14 @@ aws ssm start-session --target $Private_12_103
 aws ssm start-session --target $Private_12_104
 
 ```
+
+3. Testing of SCP transfer in Cloud9.
+
+```
+scp -i ./mykey.pem ec2-user@3.36.76.21:/home/ec2-user/10G.dummy ./
+
+```
+
 
 
 
