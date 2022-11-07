@@ -95,6 +95,10 @@ Parameters:
     Default: 0.0.0.0/0
     Description: Subnet for route tables from Private Subnet to GWLB 
 
+  VPCEndpointServiceName:
+    Type: String
+    Description: Check the name of the VPC Endpoint Service in the GWLB VPC. 
+
   InstanceType:
     Type: String
     Default: "m5.xlarge"
