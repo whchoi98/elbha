@@ -82,7 +82,7 @@ aws cloudformation deploy \
 export VPCEndpointServiceName=$(aws ec2 describe-vpc-endpoint-services --filter "Name=service-type,Values=GatewayLoadBalancer" | jq -r '.ServiceNames[]')
 echo $VPCEndpointServiceName
 
- ```
+```
 
 ```
 ## Export Linux firewall based appliance to shell variable
@@ -90,6 +90,33 @@ echo $VPCEndpointServiceName
 
 ```
 
+```
+### Workload VPC
+### Create S3 bucket
+export bucket_name="whchoi110601"
+echo "export bucket_name=${bucket_name}" | tee -a ~/.bash_profile
+aws s3 mb s3://${bucket_name}
+
+aws cloudformation deploy \
+  --region ap-northeast-2 \
+  --stack-name "ICNVPC" \
+  --template-file "/home/ec2-user/environment/elbha/ICNVPC.yaml" \
+  --parameter-overrides "KeyPair=$mykey" "VPCEndpointServiceName=$VPCEndpointServiceName" \
+  --capabilities CAPABILITY_NAMED_IAM
+  --s3-bucket ${bucket_name}
+
+```
+
+```
+mv ./mykey ./mykey.pem
+chmod 400 ./mykey.pem
+```
+
+```
+aws ec2 describe-instances --filters 'Name=tag:Name,Values=*cloud9*' | jq -r '.Reservations[].Instances[].PublicIpAddress'
+export cloud9_public_ip=$(aws ec2 describe-instances --filters 'Name=tag:Name,Values=*cloud9*' | jq -r '.Reservations[].Instances[].PublicIpAddress')
+
+```
 
 
 
