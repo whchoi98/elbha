@@ -1,4 +1,4 @@
-!/bin/sh
+##!/bin/sh
 date +"%y%m%d%H" >> ./$(date +"%y%m%d%H").txt
 while true
 
