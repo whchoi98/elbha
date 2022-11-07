@@ -102,7 +102,7 @@ aws cloudformation deploy \
   --stack-name "ICNVPC" \
   --template-file "/home/ec2-user/environment/elbha/ICNVPC.yaml" \
   --parameter-overrides "KeyPair=$mykey" "VPCEndpointServiceName=$VPCEndpointServiceName" \
-  --capabilities CAPABILITY_NAMED_IAM
+  --capabilities CAPABILITY_NAMED_IAM \
   --s3-bucket ${bucket_name}
 
 ```
@@ -115,6 +115,8 @@ chmod 400 ./mykey.pem
 ```
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=*cloud9*' | jq -r '.Reservations[].Instances[].PublicIpAddress'
 export cloud9_public_ip=$(aws ec2 describe-instances --filters 'Name=tag:Name,Values=*cloud9*' | jq -r '.Reservations[].Instances[].PublicIpAddress')
+echo "export cloud9_public_ip=${cloud9_public_ip}"| tee -a ~/.bash_profile
+source ~/.bash_profile
 
 ```
 
