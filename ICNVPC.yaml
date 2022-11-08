@@ -1229,7 +1229,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1271,7 +1271,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1313,7 +1313,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1355,7 +1355,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1397,7 +1397,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1439,7 +1439,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1481,7 +1481,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1523,7 +1523,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -1565,6 +1565,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.21.101'
@@ -1600,6 +1607,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.21.102'
@@ -1635,6 +1649,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.21.103'
@@ -1670,6 +1691,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.21.104'
@@ -1705,6 +1733,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.22.101'
@@ -1740,6 +1775,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.22.102'
@@ -1775,6 +1817,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.22.103'
@@ -1808,6 +1857,13 @@ Resources:
         - Ref: PrivateEC2SG
       KeyName: !Ref KeyPair
       IamInstanceProfile: !Ref InstanceProfileSSM
+      BlockDeviceMappings: 
+        - DeviceName: /dev/xvda
+          Ebs: 
+            VolumeSize: 50
+            VolumeType: gp3
+            Iops: 3000
+            DeleteOnTermination: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Private-10.11.22.104'
