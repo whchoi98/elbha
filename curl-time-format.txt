@@ -1,0 +1,2 @@
+t_nslookup: %{time_namelookup} t_connect: %{time_connect} t_pretransfer:%{time_pretransfer} t_redirect:%{time_redirect} t_starttransfer:%{time_starttransfer} t_total:%{time_total}
+\n

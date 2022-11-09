@@ -34,8 +34,10 @@ ssh-keygen
 5. Send the public key to the region and store the key value in a shell variable.
 
 ```
-aws ec2 import-key-pair --key-name "eksworkshop" --public-key-material fileb://./mykey.pub --region ap-northeast-2
+aws ec2 import-key-pair --key-name "mykey" --public-key-material fileb://./mykey.pub --region ap-northeast-2
 export mykey=mykey
+echo "export mykey=${mykey}" | tee -a ~/.bash_profile
+source ~/.bash_profile
 
 ```
 
@@ -93,7 +95,7 @@ echo $VPCEndpointServiceName
 ```
 ### Workload VPC
 ### Create S3 bucket
-export bucket_name="whchoi110601"
+export bucket_name="whchoi110801"
 echo "export bucket_name=${bucket_name}" | tee -a ~/.bash_profile
 aws s3 mb s3://${bucket_name}
 
@@ -159,8 +161,15 @@ aws ssm start-session --target $Appliance_12_102
 
 ```
 sudo su ec2-user
-export mykey="$Cloud9_Public_IP"
-sudo tcpdump -nvv 'port 6081'| grep $Cloud9_Public_IP
+export cloud9_public_ip="$cloud9_public_ip"
+echo "export cloud9_public_ip=${cloud9_public_ip}"| tee -a ~/.bash_profile
+
+sudo tcpdump -nvv 'port 6081'| grep ${cloud9_public_ip}
+tcpdump -i eth0 source ${cloud9_public_ip}
+#XFF Filter / HTTP GET
+sudo tcpdump -i enp0s8 -s 0 -A 'tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x47455420' | grep ${cloud9_public_ip}
+##XFF Filter / HTTP NGINX,Apach
+sudo tcpdump -i enp0s8 -s 0 -A 'tcp dst port 80 and tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x47455420' | grep ${cloud9_public_ip}
 
 ```
 
@@ -190,12 +199,43 @@ aws ssm start-session --target $Private_12_104
 
 ```
 scp -i ./mykey.pem ec2-user@3.36.76.21:/home/ec2-user/10G.dummy ./
+script -c "scp -i ./mykey.pem ec2-user@Public_11_101:/home/ec2-user/10G.dummy ./" scplog.txt
+```
+
+curl format 1
+
+```
+while true; do echo -n "$(date) - " ; curl -w @curl-time-format.txt -o /dev/null -s $Public_11_101_IP; sleep 1; done >> result1.txt
+
+curl-time-format.txt
+t_nslookup: %{time_namelookup} t_connect: %{time_connect} t_pretransfer:%{time_pretransfer} t_redirect:%{time_redirect} t_starttransfer:%{time_starttransfer} t_total:%{time_total}
+\n
 
 ```
 
+curl format2
+```
+curl-format.txt
+  \n
+  time_namelookup:     %{time_namelookup}s\n
+  time_connect:        %{time_connect}s\n
+  time_appconnect:     %{time_appconnect}s\n
+  time_pretransfer:    %{time_pretransfer}s\n
+  time_redirect:       %{time_redirect}s\n
+  time_starttransfer:  %{time_starttransfer}s\n
+  -----------------------------------------\n
+  \n
+          time_total:  %{time_total}s\n
+  \n
+while true; do curl -w "@curl-format.txt" -o /dev/null -s $Public_11_101_IP ; sleep 1 ; done
+```
 
-
-
+EC2 Stop & Start & reboot
+```
+aws ec2 stop-instances --instance-ids $instance-id
+aws ec2 start-instances --instance-ids $instance-id
+aws ec2 reboot-instances --instance-ids $instance-id
+```
 
 
 

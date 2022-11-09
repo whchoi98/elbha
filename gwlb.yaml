@@ -43,7 +43,7 @@ Parameters:
 
   InstanceType:
     Type: String
-    Default: t3.small
+    Default: m5.2xlarge
     Description: EC2 Instance Type for the VPC.
 
 ################################
@@ -310,7 +310,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -394,7 +394,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -478,7 +478,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true
@@ -562,7 +562,7 @@ Resources:
       BlockDeviceMappings: 
         - DeviceName: /dev/xvda
           Ebs: 
-            VolumeSize: 10
+            VolumeSize: 50
             VolumeType: gp3
             Iops: 3000
             DeleteOnTermination: true

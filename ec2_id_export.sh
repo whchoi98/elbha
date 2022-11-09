@@ -1,6 +1,6 @@
 # !/bin/bash
 # EC2 ID export for access by Session Manager
-aws ec2 describe-instances --filters 'Name=tag:Name,Values=ICNVPC-Public-10.11.11.101' 'Name=instance-state-name,Values=running' | jq -r '.Reservations[].Instances[].InstanceId'
+    aws ec2 describe-instances --filters 'Name=tag:Name,Values=ICNVPC-Public-10.11.11.101' 'Name=instance-state-name,Values=running' | jq -r '.Reservations[].Instances[].InstanceId'
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=ICNVPC-Public-10.11.11.102' 'Name=instance-state-name,Values=running' | jq -r '.Reservations[].Instances[].InstanceId'
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=ICNVPC-Public-10.11.11.103' 'Name=instance-state-name,Values=running' | jq -r '.Reservations[].Instances[].InstanceId'
 aws ec2 describe-instances --filters 'Name=tag:Name,Values=ICNVPC-Public-10.11.11.104' 'Name=instance-state-name,Values=running' | jq -r '.Reservations[].Instances[].InstanceId'
